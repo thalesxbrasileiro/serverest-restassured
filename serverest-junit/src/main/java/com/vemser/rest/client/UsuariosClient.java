@@ -32,6 +32,28 @@ public class UsuariosClient extends BaseClient {
 				;
 	}
 
+	public Response buscarUsuarioPorID(String id) {
+
+		return
+				given()
+						.spec(super.set())
+						.pathParam("id", id)
+						.when()
+						.get(USUARIOS + "/{id}")
+				;
+	}
+
+	public Response buscarUsuarioPorNome(String nome) {
+
+		return
+				given()
+						.spec(super.set())
+						.queryParam("nome", nome)
+						.when()
+						.get(USUARIOS)
+				;
+	}
+
 	public void excluirUsuario(String id) {
 
 		given()
