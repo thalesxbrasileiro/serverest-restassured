@@ -22,6 +22,16 @@ public class UsuariosClient extends BaseClient {
 				;
 	}
 
+	public Response buscarTodosUsuarios() {
+
+		return
+				given()
+						.spec(super.set())
+				.when()
+						.get(USUARIOS)
+				;
+	}
+
 	public void excluirUsuario(String id) {
 
 		given()
