@@ -38,7 +38,7 @@ public class UsuariosClient extends BaseClient {
 				given()
 						.spec(super.set())
 						.pathParam("id", id)
-						.when()
+				.when()
 						.get(USUARIOS + "/{id}")
 				;
 	}
@@ -49,12 +49,22 @@ public class UsuariosClient extends BaseClient {
 				given()
 						.spec(super.set())
 						.queryParam("nome", nome)
-						.when()
+				.when()
 						.get(USUARIOS)
 				;
 	}
 
-	public void excluirUsuario(String id) {
+	public Response excluirUsuario(String id) {
+
+		return
+				given()
+						.spec(super.set())
+						.pathParam("id", id)
+				.when()
+						.delete(USUARIOS + "/{id}");
+	}
+
+	public void excluirUsuarioDoBanco(String id) {
 
 		given()
 				.spec(super.set())

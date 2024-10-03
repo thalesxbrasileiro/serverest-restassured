@@ -34,7 +34,7 @@ public class ListarUsuarioPorIDTest {
 	@AfterEach
 	public void excluirUsuarioAoFinalDaRequisicao() {
 		if (usuarioId != null) {
-			usuariosClient.excluirUsuario(usuarioId);
+			usuariosClient.excluirUsuarioDoBanco(usuarioId);
 		}
 	}
 
