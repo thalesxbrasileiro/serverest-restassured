@@ -9,13 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RealizarLoginTest {
 
 	private final LoginClient loginClient = new LoginClient();
-
-	// CENÁRIO POSITIVO
 
 	@Test
 	@DisplayName("Cenário 01: Deve retornar 200 e realizar login com sucesso")
@@ -39,7 +36,6 @@ public class RealizarLoginTest {
 		assertTrue(authorization.matches("^Bearer [a-zA-Z0-9.\\-_]+$"), "O token de autorização deve estar no formato esperado");
 	}
 
-	// CENÁRIOS NEGATIVOS
 	@Test
 	@DisplayName("Cenário 02: Deve retornar 401 quando tentar realizar login com usuário inválido")
 	public void testTentarRealizarLoginComUsuarioInvalido() {

@@ -35,18 +35,6 @@ public class LoginDataFactory {
 		return login;
 	}
 
-//	public static LoginModel loginUsuarioNaoAdmin() {
-//
-//		String emailUsuarioNaoAdmin = UsuariosDataFactory.buscarOemailDoPrimeiroUsuarioNaoAdminId();
-//		String passwordUsuarioNaoAdmin = UsuariosDataFactory.buscarOpasswordDoPrimeiroUsuarioNaoAdminId();
-//
-//		LoginModel login = new LoginModel();
-//		login.setEmail(emailUsuarioNaoAdmin);
-//		login.setPassword(passwordUsuarioNaoAdmin);
-//
-//		return login;
-//	}
-
 	public static LoginModel loginSemInformarUsuario() {
 
 		LoginModel login = new LoginModel();
@@ -64,5 +52,18 @@ public class LoginDataFactory {
 
 		return login;
 	}
+
+	public static LoginModel loginUsuarioNaoAdmin() {
+
+		String emailUsuarioNaoAdmin = UsuariosDataFactory.buscarOemailDoPrimeiroUsuarioNaoAdminId();
+		String passwordUsuarioNaoAdmin = UsuariosDataFactory.buscarOpasswordDoPrimeiroUsuarioNaoAdminId();
+
+		LoginModel login = new LoginModel();
+		login.setEmail(emailUsuarioNaoAdmin);
+		login.setPassword(passwordUsuarioNaoAdmin);
+
+		return login;
+	}
+
 
 }
