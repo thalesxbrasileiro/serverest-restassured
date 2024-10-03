@@ -64,6 +64,19 @@ public class UsuariosClient extends BaseClient {
 						.delete(USUARIOS + "/{id}");
 	}
 
+	public Response atualizarUsuario(UsuariosModel usuario, String id) {
+
+		return
+				given()
+						.spec(super.set())
+						.contentType(ContentType.JSON)
+						.pathParam("id", id)
+						.body(usuario)
+				.when()
+						.put(USUARIOS + "/{id}")
+				;
+	}
+
 	public void excluirUsuarioDoBanco(String id) {
 
 		given()
