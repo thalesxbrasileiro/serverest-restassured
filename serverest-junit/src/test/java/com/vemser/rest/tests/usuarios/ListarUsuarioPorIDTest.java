@@ -12,6 +12,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Testes de listar usuário por ID")
 public class ListarUsuarioPorIDTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();

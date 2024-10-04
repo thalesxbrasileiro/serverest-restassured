@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Testes de excluir usuários")
 public class ExcluirUsuarioTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();

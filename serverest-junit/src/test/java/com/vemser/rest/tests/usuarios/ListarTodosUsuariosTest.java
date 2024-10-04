@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
+@DisplayName("Testes de listar todos os usuários")
 public class ListarTodosUsuariosTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();

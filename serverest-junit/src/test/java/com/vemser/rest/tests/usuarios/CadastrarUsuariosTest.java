@@ -17,6 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Testes de cadastrar usuários")
 public class CadastrarUsuariosTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();
@@ -126,7 +127,7 @@ public class CadastrarUsuariosTest {
 		);
 	}
 
-	@ParameterizedTest
+	@ParameterizedTest(name = "Run: {index} - {0} - KEY: {1} - VALUE: {2}")
 	@MethodSource("com.vemser.rest.data.provider.UsuariosDataProvider#usuarioDataProvider")
 	@DisplayName("Cenário 06: Deve retornar 400 quando tentar cadastrar usuário com dados inválidos")
 	public void testTentarCadastrarUsuarioComTodosDadosEmBrancoDataProvider(UsuariosModel usuario, String key, String value) {

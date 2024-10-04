@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Testes de realizar login")
 public class RealizarLoginTest {
 
 	private final LoginClient loginClient = new LoginClient();

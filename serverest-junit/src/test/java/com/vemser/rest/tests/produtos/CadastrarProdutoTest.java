@@ -19,6 +19,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
+@DisplayName("Testes de cadastrar produtos")
 public class CadastrarProdutoTest {
 
 	private final LoginClient loginClient = new LoginClient();
@@ -121,7 +122,7 @@ public class CadastrarProdutoTest {
 				.body("message", equalTo("Já existe produto com esse nome"));
 	}
 
-	@ParameterizedTest
+	@ParameterizedTest(name = "Run: {index} - {0} - KEY: {1} - VALUE: {2}")
 	@MethodSource("com.vemser.rest.data.provider.ProdutosDataProvider#produtoDataProvider")
 	@DisplayName("Cenário 06: Deve retornar 400 ao tentar cadastrar produto sem informar a descrição")
 	public void testDeveCadastrarProdutosComDataProvider(ProdutosModel produto, String key, String value) {

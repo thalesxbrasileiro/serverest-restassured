@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@DisplayName("Testes de listar produto por ID")
 public class ListarProdutoPorIDTest {
 
 	private final ProdutosClient produtosClient = new ProdutosClient();

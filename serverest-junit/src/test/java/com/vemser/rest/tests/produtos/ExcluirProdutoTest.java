@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
+@DisplayName("Testes de excluir produtos")
 public class ExcluirProdutoTest {
 
 	private final LoginClient loginClient = new LoginClient();

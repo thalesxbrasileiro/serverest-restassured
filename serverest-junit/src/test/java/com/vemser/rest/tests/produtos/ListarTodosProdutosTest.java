@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
+@DisplayName("Testes de listar todos os produtos")
 public class ListarTodosProdutosTest {
 
 	private final ProdutosClient produtosClient = new ProdutosClient();

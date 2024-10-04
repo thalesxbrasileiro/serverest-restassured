@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
+@DisplayName("Testes de atualizar produtos")
 public class AtualizarProdutosTest {
 
 	private final LoginClient loginClient = new LoginClient();
