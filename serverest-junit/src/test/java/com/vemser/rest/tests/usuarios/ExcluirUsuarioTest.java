@@ -4,11 +4,9 @@ import com.vemser.rest.client.UsuariosClient;
 import com.vemser.rest.data.factory.UsuariosDataFactory;
 import com.vemser.rest.model.UsuariosModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de excluir usuários")
 public class ExcluirUsuarioTest {
 

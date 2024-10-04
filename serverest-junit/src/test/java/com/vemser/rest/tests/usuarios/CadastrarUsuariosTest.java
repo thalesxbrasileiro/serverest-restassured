@@ -6,10 +6,7 @@ import com.vemser.rest.model.UsuariosModel;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -17,6 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de cadastrar usuários")
 public class CadastrarUsuariosTest {
 

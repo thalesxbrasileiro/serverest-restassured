@@ -12,6 +12,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de listar usuário por ID")
 public class ListarUsuarioPorIDTest {
 
@@ -29,7 +30,7 @@ public class ListarUsuarioPorIDTest {
 				.then()
 				.statusCode(HttpStatus.SC_CREATED)
 				.extract()
-				.path("_id"); // Armazena o ID do usuário cadastrado
+				.path("_id");
 	}
 
 	@AfterEach

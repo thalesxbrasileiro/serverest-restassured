@@ -6,6 +6,7 @@ import com.vemser.rest.model.UsuariosModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de atualizar usuários")
 public class AtualizarUsuariosTest {
 

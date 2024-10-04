@@ -3,11 +3,14 @@ package com.vemser.rest.tests.usuarios;
 import com.vemser.rest.client.UsuariosClient;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de listar todos os usuários")
 public class ListarTodosUsuariosTest {
 
