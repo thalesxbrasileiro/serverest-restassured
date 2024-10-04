@@ -10,7 +10,7 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de listar usuário por ID")
@@ -104,10 +104,10 @@ public class ListarUsuarioPorIDTest {
 						.extract()
 						.as(UsuariosResponse.class);
 
-		Assertions.assertAll("response",
+		assertAll("response",
 				() -> assertEquals(usuario.getNome(), response.getNome(), "O nome não corresponde ao esperado"),
 				() -> assertEquals(usuario.getEmail(), response.getEmail(), "O e-mail não corresponde ao esperado"),
-				() -> Assertions.assertNotNull(response.getPassword(), "O password não deve ser nulo")
+				() -> assertNotNull(response.getPassword(), "O password não deve ser nulo")
 		);
 	}
 
@@ -123,7 +123,7 @@ public class ListarUsuarioPorIDTest {
 						.extract()
 						.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> assertEquals(400, response.getStatusCode()),
 				() -> assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message")),
 				() -> assertEquals("application/json; charset=utf-8", response.contentType())
@@ -142,7 +142,7 @@ public class ListarUsuarioPorIDTest {
 						.extract()
 						.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> assertEquals(400, response.getStatusCode()),
 				() -> assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message")),
 				() -> assertEquals("application/json; charset=utf-8", response.contentType())

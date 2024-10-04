@@ -46,9 +46,9 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Registro alterado com sucesso"));
 	}
 
-	@Order(2)
+	@Order(4)
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 400 ao tentar atualizar produto sem informar descrição")
+	@DisplayName("Cenário 04: Deve retornar 400 ao tentar atualizar produto sem informar descrição")
 	public void testTentarAtualizarProdutoSemInformarDescricao() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -76,9 +76,9 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
 	}
 
-	@Order(4)
+	@Order(5)
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 400 ao tentar atualizar produto já existente")
+	@DisplayName("Cenário 05: Deve retornar 400 ao tentar atualizar produto já existente")
 	public void testTentarAtualizarProdutoJaExistente() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -91,9 +91,9 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Já existe produto com esse nome"));
 	}
 
-	@Order(5)
+	@Order(2)
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 403 ao tentar atualizar produto sem ser administrador")
+	@DisplayName("Cenário 02: Deve retornar 403 ao tentar atualizar produto sem ser administrador")
 	public void testTentarAtualizarProdutoSemSerAdministrador() {
 
 		LoginModel login = LoginDataFactory.loginUsuarioNaoAdmin();
