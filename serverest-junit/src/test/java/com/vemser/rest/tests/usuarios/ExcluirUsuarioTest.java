@@ -14,7 +14,7 @@ public class ExcluirUsuarioTest {
 	private String usuarioId;
 
 	@BeforeEach
-	public void criarUsuarioAntesDeCadaTeste() {
+	public void setUp() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 

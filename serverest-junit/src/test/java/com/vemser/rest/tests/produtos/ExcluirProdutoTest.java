@@ -23,7 +23,7 @@ public class ExcluirProdutoTest {
 	private String token;
 
 	@BeforeEach
-	public void autenticar() {
+	public void setUp() {
 
 		LoginModel login = LoginDataFactory.loginValido();
 

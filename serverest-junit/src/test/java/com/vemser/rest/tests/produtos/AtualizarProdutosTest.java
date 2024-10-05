@@ -21,7 +21,7 @@ public class AtualizarProdutosTest {
 	private String token;
 
 	@BeforeEach
-	public void autenticar() {
+	public void setUp() {
 		LoginModel login = LoginDataFactory.loginValido();
 
 		token =

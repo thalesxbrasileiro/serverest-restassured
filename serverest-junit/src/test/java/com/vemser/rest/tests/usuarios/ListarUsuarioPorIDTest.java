@@ -34,7 +34,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@AfterEach
-	public void excluirUsuarioAoFinalDaRequisicao() {
+	public void tearDown() {
 		if (usuarioId != null) {
 			usuariosClient.excluirUsuarioDoBanco(usuarioId);
 		}
@@ -87,8 +87,10 @@ public class ListarUsuarioPorIDTest {
 		String nomeResponse = usuarioResponse.path("nome");
 		String emailResponse = usuarioResponse.path("email");
 
-		assertEquals(usuario.getNome(), nomeResponse);
-		assertEquals(usuario.getEmail(), emailResponse);
+		assertAll(
+				() -> assertEquals(usuario.getNome(), nomeResponse),
+				() -> assertEquals(usuario.getEmail(), emailResponse)
+		);
 	}
 
 	@Test

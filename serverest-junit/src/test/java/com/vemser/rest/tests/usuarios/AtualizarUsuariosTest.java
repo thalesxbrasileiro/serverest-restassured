@@ -14,7 +14,7 @@ public class AtualizarUsuariosTest {
 	private String usuarioId;
 
 	@BeforeEach
-	public void criarUsuarioAntesDeCadaTeste() {
+	public void setUp() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 
@@ -25,7 +25,7 @@ public class AtualizarUsuariosTest {
 	}
 
 	@AfterEach
-	public void excluirUsuarioAoFinalDaRequisicao() {
+	public void tearDown() {
 		if (usuarioId != null) {
 			usuariosClient.excluirUsuarioDoBanco(usuarioId);
 		}

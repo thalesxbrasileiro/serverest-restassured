@@ -27,7 +27,7 @@ public class CadastrarUsuariosTest {
 	private String usuarioId;
 
 	@AfterEach
-	public void excluirUsuarioAoFinalDaRequisicao() {
+	public void tearDown() {
 		if (usuarioId != null) {
 			usuariosClient.excluirUsuarioDoBanco(usuarioId);
 		}

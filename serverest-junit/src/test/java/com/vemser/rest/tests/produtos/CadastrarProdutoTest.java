@@ -28,7 +28,7 @@ public class CadastrarProdutoTest {
 	private String token;
 
 	@BeforeEach
-	public void autenticar() {
+	public void setUp() {
 		LoginModel login = LoginDataFactory.loginValido();
 
 		token =
@@ -39,7 +39,7 @@ public class CadastrarProdutoTest {
 	}
 
 	@AfterEach
-	public void excluirProduto() {
+	public void tearDown() {
 		if (produtoId != null) {
 			produtosClient.excluirProduto(produtoId, token)
 					.then()
