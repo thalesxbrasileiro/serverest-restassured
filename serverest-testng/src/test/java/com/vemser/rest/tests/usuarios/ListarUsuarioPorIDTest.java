@@ -117,42 +117,40 @@ public class ListarUsuarioPorIDTest {
 		softAssert.assertAll();
 	}
 
-////	@DisplayName("Cenário 06: Deve retornar 400 ao tentar buscar usuário com ID inválido")
-//	@Test
-//	public void testTentarBuscarUsuarioComIDInvalido() {
-//
-//		String ID_INVALIDO = "idInvalido";
-//
-//		Response response =
-//				usuariosClient.buscarUsuarioPorID(ID_INVALIDO)
-//					.then()
-//						.extract()
-//						.response();
-//
-//		assertAll(
-//				() -> assertEquals(400, response.getStatusCode()),
-//				() -> assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message")),
-//				() -> assertEquals("application/json; charset=utf-8", response.contentType())
-//		);
-//	}
-//
-////	@DisplayName("Cenário 07: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
-//	@Test
-//	public void testTentarBuscarUsuarioComIDComEspacoEmBranco() {
-//
-//		String ID_COM_ESPACO_VAZIO = " ";
-//
-//		Response response =
-//				usuariosClient.buscarUsuarioPorID(ID_COM_ESPACO_VAZIO)
-//						.then()
-//						.extract()
-//						.response();
-//
-//		assertAll(
-//				() -> assertEquals(400, response.getStatusCode()),
-//				() -> assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message")),
-//				() -> assertEquals("application/json; charset=utf-8", response.contentType())
-//		);
-//	}
+//	@DisplayName("Cenário 06: Deve retornar 400 ao tentar buscar usuário com ID inválido")
+	@Test
+	public void testTentarBuscarUsuarioComIDInvalido() {
+
+		String ID_INVALIDO = "idInvalido";
+
+		Response response =
+				usuariosClient.buscarUsuarioPorID(ID_INVALIDO)
+					.then()
+						.extract()
+						.response();
+
+		softAssert.assertEquals(400, response.getStatusCode());
+		softAssert.assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message"));
+		softAssert.assertEquals("application/json; charset=utf-8", response.contentType());
+		softAssert.assertAll();
+	}
+
+//	@DisplayName("Cenário 07: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
+	@Test
+	public void testTentarBuscarUsuarioComIDComEspacoEmBranco() {
+
+		String ID_COM_ESPACO_VAZIO = " ";
+
+		Response response =
+				usuariosClient.buscarUsuarioPorID(ID_COM_ESPACO_VAZIO)
+						.then()
+						.extract()
+						.response();
+
+		softAssert.assertEquals(400, response.getStatusCode());
+		softAssert.assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message"));
+		softAssert.assertEquals("application/json; charset=utf-8", response.contentType());
+		softAssert.assertAll();
+	}
 
 }
