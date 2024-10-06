@@ -13,6 +13,7 @@ target/
 *.iml
 *.ipr
 .allure-report/
+src/properties/
 
 ### Eclipse ###
 .apt_generated
