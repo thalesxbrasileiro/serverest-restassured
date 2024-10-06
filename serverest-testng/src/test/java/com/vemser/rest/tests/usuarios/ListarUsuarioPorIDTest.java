@@ -46,7 +46,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 01: Deve validar contrato de listar usuários por ID com sucesso")
-	@Test
+	@Test(groups = "contrato")
 	public void testDeveValidarContratoListarUsuariosPorIDComSucesso() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -56,7 +56,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 02: Deve retornar 200 e listar usuários por nome com sucesso")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testListarUsuariosPorNomeComSucesso() {
 
 		usuariosClient.buscarUsuarioPorNome(usuario.getNome())
@@ -66,7 +66,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 03: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Hamcrest")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testBuscarUsuarioPorIDComSucessoHamcrest() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -80,7 +80,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 04: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Assertions")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testBuscarUsuarioPorIDComSucessoAssertions() {
 
 		Response usuarioResponse =
@@ -99,7 +99,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 05: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando AssertAll")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testBuscarUsuarioPorIDComAssertAll() {
 
 		UsuariosResponse response =
@@ -118,7 +118,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 06: Deve retornar 400 ao tentar buscar usuário com ID inválido")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testTentarBuscarUsuarioComIDInvalido() {
 
 		String ID_INVALIDO = "idInvalido";
@@ -136,7 +136,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 //	@DisplayName("Cenário 07: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
-	@Test
+	@Test(dependsOnGroups = "contrato", groups = "funcional")
 	public void testTentarBuscarUsuarioComIDComEspacoEmBranco() {
 
 		String ID_COM_ESPACO_VAZIO = " ";

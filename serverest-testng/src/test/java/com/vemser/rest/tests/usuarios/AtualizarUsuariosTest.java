@@ -89,6 +89,7 @@ public class AtualizarUsuariosTest {
 
 				usuariosClient.atualizarUsuario(usuario, idInvalido)
 					.then()
+						.log().all()
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(400)
 						.extract()

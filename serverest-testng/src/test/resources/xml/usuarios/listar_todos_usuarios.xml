@@ -1,0 +1,11 @@
+<suite name="Suite de Testes de Usuários" verbose="1">
+    <test name="Teste de Listar Usuários">
+        <classes>
+            <class name="com.vemser.rest.tests.usuarios.ListarTodosUsuariosTest">
+                <methods>
+                    <include name="testDeveValidarContratoListarTodosUsuariosComSucesso" description="TESTE"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

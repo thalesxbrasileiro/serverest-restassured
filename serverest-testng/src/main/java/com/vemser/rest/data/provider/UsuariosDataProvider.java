@@ -17,13 +17,13 @@ public class UsuariosDataProvider {
 	private static final String VALUE_PASSWORD_EM_BRANCO = "password não pode ficar em branco";
 	private static final String VALUE_ISADMIN_EM_BRANCO = "administrador deve ser 'true' ou 'false'";
 
-	@DataProvider(name = "usuarioDataProvider")
+	@DataProvider
 	public static Object[][] usuarioDataProvider() {
 		return new Object[][] {
-				{ UsuariosDataFactory.usuarioComNomeEmBranco(), "nome", "nome não pode ficar em branco" },
-				{ UsuariosDataFactory.usuarioComEmailEmBranco(), "email", "email não pode ficar em branco" },
-				{ UsuariosDataFactory.usuarioComPasswordEmBranco(), "password", "password não pode ficar em branco" },
-				{ UsuariosDataFactory.usuarioComIsAdminEmBranco(), "administrador", "administrador deve ser 'true' ou 'false'" }
+				{ UsuariosDataFactory.usuarioComNomeEmBranco(), KEY_NOME, VALUE_NOME_EM_BRANCO },
+				{ UsuariosDataFactory.usuarioComEmailEmBranco(), KEY_EMAIL, VALUE_EMAIL_EM_BRANCO},
+				{ UsuariosDataFactory.usuarioComPasswordEmBranco(), KEY_PASSWORD, VALUE_PASSWORD_EM_BRANCO },
+				{ UsuariosDataFactory.usuarioComIsAdminEmBranco(), KEY_ISADMIN, VALUE_ISADMIN_EM_BRANCO }
 		};
 	}
 }

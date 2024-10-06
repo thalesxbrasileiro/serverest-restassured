@@ -1,0 +1,16 @@
+<suite name="Suite de Contratos" parallel="tests" thread-count="2">
+    <test name="Teste de Contratos">
+        <classes>
+            <class name="com.vemser.rest.tests.usuarios.ListarTodosUsuariosTest">
+                <methods>
+                    <include name="testDeveValidarContratoListarTodosUsuariosComSucesso"/>
+                </methods>
+            </class>
+            <class name="com.vemser.rest.tests.usuarios.ListarUsuarioPorIDTest">
+                <methods>
+                    <include name="testDeveValidarContratoListarUsuariosPorIDComSucesso"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

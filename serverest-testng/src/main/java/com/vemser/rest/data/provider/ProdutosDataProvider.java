@@ -12,12 +12,12 @@ public class ProdutosDataProvider {
 	private static final String KEY_QUANTIDADE = "quantidade";
 
 	// VALORES
-	private static final String VALUE_NOME_EM_BRANCO = "nome não pode ficar em branco";
+	private static final String VALUE_NOME_EM_BRANCO =  "nome não pode ficar em branco";
 	private static final String VALUE_PRECO_EM_BRANCO = "preco deve ser um número";
 	private static final String VALUE_DESCRICAO_EM_BRANCO = "descricao não pode ficar em branco";
 	private static final String VALUE_QUANTIDADE_EM_BRANCO = "quantidade deve ser um número";
 
-	@DataProvider(name = "produtoDataProvider")
+	@DataProvider
 	public static Object[][] produtoDataProvider() {
 		return new Object[][] {
 				{ ProdutosDataFactory.produtoSemNome(), KEY_NOME, VALUE_NOME_EM_BRANCO },

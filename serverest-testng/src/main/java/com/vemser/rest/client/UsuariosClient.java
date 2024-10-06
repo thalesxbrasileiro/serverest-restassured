@@ -68,6 +68,7 @@ public class UsuariosClient extends BaseClient {
 
 		return
 				given()
+						.log().all()
 						.spec(super.set())
 						.contentType(ContentType.JSON)
 						.pathParam("id", id)
