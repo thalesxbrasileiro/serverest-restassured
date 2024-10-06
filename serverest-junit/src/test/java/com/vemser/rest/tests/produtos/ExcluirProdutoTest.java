@@ -29,19 +29,18 @@ public class ExcluirProdutoTest {
 
 		token =
 				loginClient.realizarLogin(login)
-						.then()
+					.then()
 						.extract()
 						.path("authorization");
 	}
 
 	@Test
-	@DisplayName("Cenário 01: Deve retornar 200 ao excluir produto com sucesso")
+	@DisplayName("CT-001: Deve retornar 200 ao excluir produto com sucesso")
 	public void testExcluirProdutoComSucesso() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoValido();
 
 		String idProduto =
-
 				produtosClient.cadastrarProduto(produto, token)
 					.then()
 						.statusCode(201)
@@ -56,7 +55,7 @@ public class ExcluirProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 401 ao tentar excluir produto com token expirado")
+	@DisplayName("CT-002: Deve retornar 401 ao tentar excluir produto com token expirado")
 	public void testTentarExcluirProdutoComTokenExpirado() {
 
 		String id = "BeeJh5lz3k6kSIzA";
@@ -70,7 +69,7 @@ public class ExcluirProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 405 ao tentar excluir produto sem fornecer ID")
+	@DisplayName("CT-003: Deve retornar 405 ao tentar excluir produto sem fornecer ID")
 	public void testTentarExcluirProdutoSemFornecerID() {
 
 		String idProduto = "";
@@ -82,7 +81,7 @@ public class ExcluirProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 401 ao tentar excluir produto com ID em branco")
+	@DisplayName("CT-004: Deve retornar 401 ao tentar excluir produto com ID em branco")
 	public void testTentarExcluirProdutoComIDEmBranco() {
 
 		String idProduto = StringUtils.EMPTY;
@@ -95,7 +94,7 @@ public class ExcluirProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 400 ao tentar excluir produto que faz parte de carrinho")
+	@DisplayName("CT-005: Deve retornar 400 ao tentar excluir produto que faz parte de carrinho")
 	public void testTentarExcluirProdutoQueFazParteDoCarrinho() {
 
 		String idProduto = "K6leHdftCeOJj8BJ";
@@ -108,7 +107,7 @@ public class ExcluirProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 06: Deve retornar 403 ao tentar excluir produto sem ser administrador")
+	@DisplayName("CT-006: Deve retornar 403 ao tentar excluir produto sem ser administrador")
 	public void testTentarExcluirProdutoSemSerAdministrador() {
 
 		String token =

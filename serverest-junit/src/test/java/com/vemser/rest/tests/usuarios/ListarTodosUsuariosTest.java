@@ -17,7 +17,7 @@ public class ListarTodosUsuariosTest {
 	private final UsuariosClient usuariosClient = new UsuariosClient();
 
 	@Test
-	@DisplayName("Cenário 01: Deve validar contrato de listar usuários com sucesso")
+	@DisplayName("CT-001: Deve validar contrato de listar usuários com sucesso")
 	public void testDeveValidarContratoListarTodosUsuariosComSucesso() {
 
 		usuariosClient.buscarTodosUsuarios()
@@ -27,7 +27,7 @@ public class ListarTodosUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 200 quando listar todos os usuários com sucesso")
+	@DisplayName("CT-002: Deve retornar 200 quando listar todos os usuários com sucesso")
 	public void testListarTodosUsuariosComSucesso() {
 
 		usuariosClient.buscarTodosUsuarios()

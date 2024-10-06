@@ -6,6 +6,8 @@ import com.vemser.rest.model.UsuariosModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 @TestMethodOrder(MethodOrderer.DisplayName.class)
 @DisplayName("Testes de atualizar usuários")
 public class AtualizarUsuariosTest {
@@ -18,10 +20,11 @@ public class AtualizarUsuariosTest {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 
-		usuarioId = usuariosClient.cadastrarUsuarios(usuario)
-				.then()
-				.extract()
-				.path("_id");
+		usuarioId =
+				usuariosClient.cadastrarUsuarios(usuario)
+					.then()
+						.extract()
+							.path("_id");
 	}
 
 	@AfterEach
@@ -32,19 +35,20 @@ public class AtualizarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 01: Deve retornar 200 e atualizar usuário com sucesso")
+	@DisplayName("CT-001: Deve retornar 200 e atualizar usuário com sucesso")
 	public void testAtualizarUsuariosComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 
-		Response response = usuariosClient.atualizarUsuario(usuario, usuarioId)
-				.then()
-				.header("Content-Type", "application/json; charset=utf-8")
-				.statusCode(200)
-				.extract()
-				.response();
+		Response response =
+				usuariosClient.atualizarUsuario(usuario, usuarioId)
+					.then()
+						.header("Content-Type", "application/json; charset=utf-8")
+						.statusCode(200)
+						.extract()
+							.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> Assertions.assertEquals(200, response.getStatusCode()),
 				() -> Assertions.assertEquals("Registro alterado com sucesso", response.jsonPath().getString("message")),
 				() -> Assertions.assertEquals("application/json; charset=utf-8", response.contentType())
@@ -52,13 +56,12 @@ public class AtualizarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 400 ao tentar alterar usuário sem todos os campos obrigatórios")
+	@DisplayName("CT-002: Deve retornar 400 ao tentar alterar usuário sem todos os campos obrigatórios")
 	public void testTentarAlterarUsuarioSemTodosOsCamposObrigatorios() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComTodosOsDadosEmBranco();
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, usuarioId)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -66,7 +69,7 @@ public class AtualizarUsuariosTest {
 						.extract()
 							.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> Assertions.assertEquals(400, response.getStatusCode()),
 				() -> Assertions.assertEquals("nome não pode ficar em branco", response.jsonPath().getString("nome")),
 				() -> Assertions.assertEquals("email não pode ficar em branco", response.jsonPath().getString("email")),
@@ -77,7 +80,7 @@ public class AtualizarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 400 ao tentar alterar usuário com ID inválido")
+	@DisplayName("CT-003: Deve retornar 400 ao tentar alterar usuário com ID inválido")
 	public void testTentarAlterarUsuarioComIDInvalido() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -85,7 +88,6 @@ public class AtualizarUsuariosTest {
 		String idInvalido = "idInvalido";
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, idInvalido)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -93,7 +95,7 @@ public class AtualizarUsuariosTest {
 						.extract()
 							.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> Assertions.assertEquals(400, response.getStatusCode(), "Status code inválido"),
 				() -> Assertions.assertEquals("application/json; charset=utf-8", response.contentType(), "Content-Type inválido"),
 				() -> Assertions.assertEquals("ID inválido", response.jsonPath().getString("message"), "Mensagem de erro inválida")
@@ -101,7 +103,7 @@ public class AtualizarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 405 ao tentar alterar usuário sem informar ID")
+	@DisplayName("CT-004: Deve retornar 405 ao tentar alterar usuário sem informar ID")
 	public void testTentarAlterarUsuarioSemInformarID() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -109,7 +111,6 @@ public class AtualizarUsuariosTest {
 		String idVazio = "";
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, idVazio)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -117,7 +118,7 @@ public class AtualizarUsuariosTest {
 						.extract()
 							.response();
 
-		Assertions.assertAll(
+		assertAll(
 				() -> Assertions.assertEquals(405, response.getStatusCode()),
 				() -> Assertions.assertEquals("application/json; charset=utf-8", response.contentType())
 		);

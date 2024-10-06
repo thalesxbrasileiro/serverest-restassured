@@ -16,13 +16,12 @@ public class RealizarLoginTest {
 	private final LoginClient loginClient = new LoginClient();
 
 	@Test
-	@DisplayName("Cenário 01: Deve retornar 200 e realizar login com sucesso")
+	@DisplayName("CT-001: Deve retornar 200 e realizar login com sucesso")
 	public void testRealizarLoginComSucesso() {
 
 		LoginModel login = LoginDataFactory.loginValido();
 
 		Response response =
-
 				loginClient.realizarLogin(login)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -30,15 +29,16 @@ public class RealizarLoginTest {
 						.extract()
 							.response();
 
-		assertEquals("Login realizado com sucesso", response.jsonPath().getString("message"));
 		String authorization = response.jsonPath().getString("authorization");
+
+		assertEquals("Login realizado com sucesso", response.jsonPath().getString("message"));
 		assertNotNull(authorization);
 		assertTrue(authorization.startsWith("Bearer "), "O token de autorização deve começar com 'Bearer '");
 		assertTrue(authorization.matches("^Bearer [a-zA-Z0-9.\\-_]+$"), "O token de autorização deve estar no formato esperado");
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 401 quando tentar realizar login com usuário inválido")
+	@DisplayName("CT-002: Deve retornar 401 quando tentar realizar login com usuário inválido")
 	public void testTentarRealizarLoginComUsuarioInvalido() {
 
 		LoginModel loginInvalido = LoginDataFactory.LoginInvalido();
@@ -51,7 +51,7 @@ public class RealizarLoginTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 401 quando tentar realizar login com senha inválida")
+	@DisplayName("CT-003: Deve retornar 401 quando tentar realizar login com senha inválida")
 	public void testTentarRealizarLoginComSenhaInvalida() {
 
 		LoginModel loginSenhaInvalida = LoginDataFactory.loginSenhaInvalida();
@@ -64,7 +64,7 @@ public class RealizarLoginTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 400 quando tentar realizar login sem informar usuário")
+	@DisplayName("CT-004: Deve retornar 400 quando tentar realizar login sem informar usuário")
 	public void testTentarRealizarLoginSemInformarUsuario() {
 
 		LoginModel loginSemInformarUsuario = LoginDataFactory.loginSemInformarUsuario();
@@ -77,7 +77,7 @@ public class RealizarLoginTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 400 quando tentar realizar login sem informar senha")
+	@DisplayName("CT-005: Deve retornar 400 quando tentar realizar login sem informar senha")
 	public void testTentarRealizarLoginSemInformarSenha() {
 
 		LoginModel loginSemInformarSenha = LoginDataFactory.loginSemInformarSenha();

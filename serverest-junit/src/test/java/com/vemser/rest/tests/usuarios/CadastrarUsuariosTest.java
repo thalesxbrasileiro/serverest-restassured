@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.DisplayName.class)
@@ -34,7 +35,7 @@ public class CadastrarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 01: Deve validar contrato de cadastro de usuários com sucesso")
+	@DisplayName("CT-001: Deve validar contrato de cadastro de usuários com sucesso")
 	public void testDeveValidarContratoCadastrarUsuariosComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -49,7 +50,7 @@ public class CadastrarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 200 quando cadastrar usuário com sucesso")
+	@DisplayName("CT-002: Deve retornar 200 quando cadastrar usuário com sucesso")
 	public void testDeveCadastrarUsuarioComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -66,7 +67,7 @@ public class CadastrarUsuariosTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 400 quando tentar cadastrar usuário sem nome")
+	@DisplayName("CT-003: Deve retornar 400 quando tentar cadastrar usuário sem nome")
 	public void testTentarCadastrarUsuarioSemNome() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComNomeEmBranco();
@@ -83,41 +84,43 @@ public class CadastrarUsuariosTest {
 
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 400 quando tentar cadastrar usuário com email já cadastrado")
+	@DisplayName("CT-004: Deve retornar 400 quando tentar cadastrar usuário com email já cadastrado")
 	public void testTentarCadastrarUsuarioComEmailCadastrado() {
 
 		UsuariosModel usuarioValido = UsuariosDataFactory.usuarioValido();
 
-		usuarioId = usuariosClient.cadastrarUsuarios(usuarioValido)
-			.then()
-				.statusCode(HttpStatus.SC_CREATED)
-				.extract()
-					.path("_id");
+		usuarioId =
+				usuariosClient.cadastrarUsuarios(usuarioValido)
+					.then()
+						.statusCode(HttpStatus.SC_CREATED)
+						.extract()
+							.path("_id");
 
 		UsuariosModel usuarioComEmailJaCadastrado = UsuariosDataFactory.usuarioComEmailJaCadastrado(usuarioValido.getEmail());
 
-		String response = usuariosClient.cadastrarUsuarios(usuarioComEmailJaCadastrado)
-			.then()
-				.statusCode(400)
-				.extract()
-					.path("message");
+		String response =
+				usuariosClient.cadastrarUsuarios(usuarioComEmailJaCadastrado)
+					.then()
+						.statusCode(400)
+						.extract()
+							.path("message");
 
 		assertEquals(EMAIL_JA_CADASTRADO, response);
 	}
 
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 400 quando tentar cadastrar usuário com email em branco")
+	@DisplayName("CT-005: Deve retornar 400 quando tentar cadastrar usuário com email em branco")
 	public void testTentarCadastrarUsuarioComTodosDadosEmBranco() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComTodosOsDadosEmBranco();
 
 		UsuariosModel response =
 				usuariosClient.cadastrarUsuarios(usuario)
-						.then()
+					.then()
 						.extract()
-						.as(UsuariosModel.class);
+							.as(UsuariosModel.class);
 
-		Assertions.assertAll("response",
+		assertAll("response",
 				() -> assertEquals(NOME_EM_BRANCO, response.getNome()),
 				() -> assertEquals(EMAIL_EM_BRANCO, response.getEmail()),
 				() -> assertEquals(PASSWORD_EM_BRANCO, response.getPassword()),
@@ -127,11 +130,11 @@ public class CadastrarUsuariosTest {
 
 	@ParameterizedTest(name = "Run: {index} - {0} - KEY: {1} - VALUE: {2}")
 	@MethodSource("com.vemser.rest.data.provider.UsuariosDataProvider#usuarioDataProvider")
-	@DisplayName("Cenário 06: Deve retornar 400 quando tentar cadastrar usuário com dados inválidos")
+	@DisplayName("CT-006: Deve retornar 400 quando tentar cadastrar usuário com dados inválidos")
 	public void testTentarCadastrarUsuarioComTodosDadosEmBrancoDataProvider(UsuariosModel usuario, String key, String value) {
 
 		usuariosClient.cadastrarUsuarios(usuario)
-				.then()
+			.then()
 				.statusCode(400)
 				.body(key, Matchers.equalTo(value));
 	}

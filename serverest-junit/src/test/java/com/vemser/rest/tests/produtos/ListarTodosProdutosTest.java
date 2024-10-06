@@ -14,17 +14,17 @@ public class ListarTodosProdutosTest {
 	private final ProdutosClient produtosClient = new ProdutosClient();
 
 	@Test
-	@DisplayName("Cenário 01: Deve validar contrato listar todos os produtos com sucesso")
+	@DisplayName("CT-001: Deve validar contrato listar todos os produtos com sucesso")
 	public void testDeveValidarContratoListarTodosProdutosComSucesso() {
 
 		produtosClient.buscarTodosProdutos()
-				.then()
+			.then()
 				.statusCode(HttpStatus.SC_OK)
 				.body(matchesJsonSchemaInClasspath("schemas/produtos/listar_todos_produtos.json"));
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 200 ao listar todos os produtos com sucesso")
+	@DisplayName("CT-002: Deve retornar 200 ao listar todos os produtos com sucesso")
 	public void testListarTodosProdutosComSucesso() {
 
 		produtosClient.buscarTodosProdutos()

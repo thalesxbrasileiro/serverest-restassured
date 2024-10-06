@@ -49,13 +49,12 @@ public class CadastrarProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 01: Deve validar contrato cadastrar produtos com sucesso")
+	@DisplayName("CT-001: Deve validar contrato cadastrar produtos com sucesso")
 	public void testDeveValidarContratoCadastrarProdutosComSucesso() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoValido();
 
 		produtoId =
-
 				produtosClient.cadastrarProduto(produto, token)
 					.then()
 						.statusCode(HttpStatus.SC_CREATED)
@@ -66,13 +65,12 @@ public class CadastrarProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 201 ao cadastrar produto com sucesso")
+	@DisplayName("CT-002: Deve retornar 201 ao cadastrar produto com sucesso")
 	public void testCadastrarProdutoComSucesso() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoValido();
 
 		produtoId =
-
 				produtosClient.cadastrarProduto(produto, token)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -84,7 +82,7 @@ public class CadastrarProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 401 ao tentar cadastrar produto sem estar autenticado")
+	@DisplayName("CT-003: Deve retornar 401 ao tentar cadastrar produto sem estar autenticado")
 	public void testTentarCadastrarProdutoSemEstarAutenticado() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoValido();
@@ -97,7 +95,7 @@ public class CadastrarProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 400 ao tentar cadastrar produto sem informar o nome")
+	@DisplayName("CT-004: Deve retornar 400 ao tentar cadastrar produto sem informar o nome")
 	public void testTentarCadastrarProdutoSemInformarOnome() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoSemNome();
@@ -110,7 +108,7 @@ public class CadastrarProdutoTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 400 ao tentar cadastrar produto sem informar a descrição")
+	@DisplayName("CT-005: Deve retornar 400 ao tentar cadastrar produto sem informar a descrição")
 	public void testTentarCadastrarProdutoComNomeExistente() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoJaCadastrado();
@@ -124,7 +122,7 @@ public class CadastrarProdutoTest {
 
 	@ParameterizedTest(name = "Run: {index} - {0} - KEY: {1} - VALUE: {2}")
 	@MethodSource("com.vemser.rest.data.provider.ProdutosDataProvider#produtoDataProvider")
-	@DisplayName("Cenário 06: Deve retornar 400 ao tentar cadastrar produto sem informar a descrição")
+	@DisplayName("CT-006: Deve retornar 400 ao tentar cadastrar produto sem informar a descrição")
 	public void testDeveCadastrarProdutosComDataProvider(ProdutosModel produto, String key, String value) {
 
 		produtosClient.cadastrarProduto(produto, token)

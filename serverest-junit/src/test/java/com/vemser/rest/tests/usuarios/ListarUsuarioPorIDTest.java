@@ -26,11 +26,12 @@ public class ListarUsuarioPorIDTest {
 	public void setUp() {
 		usuario = UsuariosDataFactory.usuarioValido();
 
-		usuarioId = usuariosClient.cadastrarUsuarios(usuario)
-				.then()
-				.statusCode(HttpStatus.SC_CREATED)
-				.extract()
-				.path("_id");
+		usuarioId =
+				usuariosClient.cadastrarUsuarios(usuario)
+					.then()
+						.statusCode(HttpStatus.SC_CREATED)
+						.extract()
+							.path("_id");
 	}
 
 	@AfterEach
@@ -41,7 +42,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 01: Deve validar contrato de listar usuários por ID com sucesso")
+	@DisplayName("CT-001: Deve validar contrato de listar usuários por ID com sucesso")
 	public void testDeveValidarContratoListarUsuariosPorIDComSucesso() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -51,7 +52,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 02: Deve retornar 200 e listar usuários por nome com sucesso")
+	@DisplayName("CT-002: Deve retornar 200 e listar usuários por nome com sucesso")
 	public void testListarUsuariosPorNomeComSucesso() {
 
 		usuariosClient.buscarUsuarioPorNome(usuario.getNome())
@@ -61,7 +62,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 03: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Hamcrest")
+	@DisplayName("CT-003: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Hamcrest")
 	public void testBuscarUsuarioPorIDComSucessoHamcrest() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -73,16 +74,15 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 04: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Assertions")
+	@DisplayName("CT-004: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Assertions")
 	public void testBuscarUsuarioPorIDComSucessoAssertions() {
 
 		Response usuarioResponse =
-
 				usuariosClient.buscarUsuarioPorID(usuarioId)
 					.then()
 						.statusCode(200)
 						.extract()
-						.response();
+							.response();
 
 		String nomeResponse = usuarioResponse.path("nome");
 		String emailResponse = usuarioResponse.path("email");
@@ -94,17 +94,16 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 05: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando AssertAll")
+	@DisplayName("CT-005: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando AssertAll")
 	public void testBuscarUsuarioPorIDComAssertAll() {
 
 		UsuariosResponse response =
-
 				usuariosClient.buscarUsuarioPorID(usuarioId)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-						.as(UsuariosResponse.class);
+							.as(UsuariosResponse.class);
 
 		assertAll("response",
 				() -> assertEquals(usuario.getNome(), response.getNome(), "O nome não corresponde ao esperado"),
@@ -114,7 +113,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 06: Deve retornar 400 ao tentar buscar usuário com ID inválido")
+	@DisplayName("CT-006: Deve retornar 400 ao tentar buscar usuário com ID inválido")
 	public void testTentarBuscarUsuarioComIDInvalido() {
 
 		String ID_INVALIDO = "idInvalido";
@@ -123,7 +122,7 @@ public class ListarUsuarioPorIDTest {
 				usuariosClient.buscarUsuarioPorID(ID_INVALIDO)
 					.then()
 						.extract()
-						.response();
+							.response();
 
 		assertAll(
 				() -> assertEquals(400, response.getStatusCode()),
@@ -133,7 +132,7 @@ public class ListarUsuarioPorIDTest {
 	}
 
 	@Test
-	@DisplayName("Cenário 07: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
+	@DisplayName("CT-007: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
 	public void testTentarBuscarUsuarioComIDComEspacoEmBranco() {
 
 		String ID_COM_ESPACO_VAZIO = " ";
