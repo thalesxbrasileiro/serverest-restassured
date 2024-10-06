@@ -32,14 +32,12 @@ public class ExcluirProdutoTest {
 						.path("authorization");
 	}
 
-//	@DisplayName("Cenário 01: Deve retornar 200 ao excluir produto com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve retornar 200 ao excluir produto com sucesso")
 	public void testExcluirProdutoComSucesso() {
 
 		ProdutosModel produto = ProdutosDataFactory.produtoValido();
 
 		String idProduto =
-
 				produtosClient.cadastrarProduto(produto, token)
 					.then()
 						.statusCode(201)
@@ -53,8 +51,7 @@ public class ExcluirProdutoTest {
 				.body("message", equalTo("Registro excluído com sucesso"));
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 401 ao tentar excluir produto com token expirado")
-	@Test
+	@Test(description = "CT-002: Deve retornar 401 ao tentar excluir produto com token expirado")
 	public void testTentarExcluirProdutoComTokenExpirado() {
 
 		String id = "BeeJh5lz3k6kSIzA";
@@ -67,8 +64,7 @@ public class ExcluirProdutoTest {
 				.body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 405 ao tentar excluir produto sem fornecer ID")
-	@Test
+	@Test(description = "CT-003: Deve retornar 405 ao tentar excluir produto sem fornecer ID")
 	public void testTentarExcluirProdutoSemFornecerID() {
 
 		String idProduto = "";
@@ -79,8 +75,7 @@ public class ExcluirProdutoTest {
 				.statusCode(405);
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 401 ao tentar excluir produto com ID em branco")
-	@Test
+	@Test(description = "CT-004: Deve retornar 401 ao tentar excluir produto com ID em branco")
 	public void testTentarExcluirProdutoComIDEmBranco() {
 
 		String idProduto = StringUtils.EMPTY;
@@ -92,8 +87,7 @@ public class ExcluirProdutoTest {
 				.body("message", equalTo("Nenhum registro excluído"));
 	}
 
-//	@DisplayName("Cenário 05: Deve retornar 400 ao tentar excluir produto que faz parte de carrinho")
-	@Test
+	@Test(description = "CT-005: Deve retornar 400 ao tentar excluir produto que faz parte de carrinho")
 	public void testTentarExcluirProdutoQueFazParteDoCarrinho() {
 
 		String idProduto = "K6leHdftCeOJj8BJ";
@@ -105,15 +99,14 @@ public class ExcluirProdutoTest {
 				.body("message", equalTo("Não é permitido excluir produto que faz parte de carrinho"));
 	}
 
-//	@DisplayName("Cenário 06: Deve retornar 403 ao tentar excluir produto sem ser administrador")
-	@Test
+	@Test(description = "CT-006: Deve retornar 403 ao tentar excluir produto sem ser administrador")
 	public void testTentarExcluirProdutoSemSerAdministrador() {
 
 		String token =
 				loginClient.realizarLogin(LoginDataFactory.loginUsuarioNaoAdmin())
 					.then()
 						.extract()
-						.path("authorization");
+							.path("authorization");
 
 		String idUsuarioNaoAdmin = UsuariosDataFactory.buscarPrimeiroUsuarioNaoAdminId();
 

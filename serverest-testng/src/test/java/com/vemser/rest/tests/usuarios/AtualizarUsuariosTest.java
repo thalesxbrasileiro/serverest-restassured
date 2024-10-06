@@ -21,10 +21,11 @@ public class AtualizarUsuariosTest {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 
-		usuarioId = usuariosClient.cadastrarUsuarios(usuario)
-				.then()
-				.extract()
-				.path("_id");
+		usuarioId =
+				usuariosClient.cadastrarUsuarios(usuario)
+					.then()
+						.extract()
+							.path("_id");
 	}
 
 	@AfterMethod
@@ -34,18 +35,18 @@ public class AtualizarUsuariosTest {
 		}
 	}
 
-//	@DisplayName("Cenário 01: Deve retornar 200 e atualizar usuário com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve retornar 200 e atualizar usuário com sucesso")
 	public void testAtualizarUsuariosComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
 
-		Response response = usuariosClient.atualizarUsuario(usuario, usuarioId)
-				.then()
-				.header("Content-Type", "application/json; charset=utf-8")
-				.statusCode(200)
-				.extract()
-				.response();
+		Response response =
+				usuariosClient.atualizarUsuario(usuario, usuarioId)
+					.then()
+						.header("Content-Type", "application/json; charset=utf-8")
+						.statusCode(200)
+						.extract()
+							.response();
 
 		softAssert.assertEquals(200, response.getStatusCode());
 		softAssert.assertEquals("Registro alterado com sucesso", response.jsonPath().getString("message"));
@@ -53,14 +54,12 @@ public class AtualizarUsuariosTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 400 ao tentar alterar usuário sem todos os campos obrigatórios")
-	@Test
+	@Test(description = "CT-002: Deve retornar 400 ao tentar alterar usuário sem todos os campos obrigatórios")
 	public void testTentarAlterarUsuarioSemTodosOsCamposObrigatorios() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComTodosOsDadosEmBranco();
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, usuarioId)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -77,8 +76,7 @@ public class AtualizarUsuariosTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 400 ao tentar alterar usuário com ID inválido")
-	@Test
+	@Test(description = "CT-003: Deve retornar 400 ao tentar alterar usuário com ID inválido")
 	public void testTentarAlterarUsuarioComIDInvalido() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -86,7 +84,6 @@ public class AtualizarUsuariosTest {
 		String idInvalido = "idInvalido";
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, idInvalido)
 					.then()
 						.log().all()
@@ -101,8 +98,7 @@ public class AtualizarUsuariosTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 405 ao tentar alterar usuário sem informar ID")
-	@Test
+	@Test(description = "CT-004: Deve retornar 405 ao tentar alterar usuário sem informar ID")
 	public void testTentarAlterarUsuarioSemInformarID() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -110,7 +106,6 @@ public class AtualizarUsuariosTest {
 		String idVazio = "";
 
 		Response response =
-
 				usuariosClient.atualizarUsuario(usuario, idVazio)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")

@@ -15,8 +15,7 @@ public class ListarProdutoPorIDTest {
 	private final ProdutosClient produtosClient = new ProdutosClient();
 	private SoftAssert softAssert = new SoftAssert();
 
-//	@DisplayName("Cenário 01: Deve validar contrato listar produtos por ID com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve validar contrato listar produtos por ID com sucesso")
 	public void testDeveValidarContratoListarProdutosPorIDComSucesso() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -27,8 +26,7 @@ public class ListarProdutoPorIDTest {
 				.body(matchesJsonSchemaInClasspath("schemas/produtos/listar_produtos_por_id.json"));
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 200 ao listar produto por ID com sucesso")
-	@Test
+	@Test(description = "CT-002 02: Deve retornar 200 ao listar produto por ID com sucesso")
 	public void testListarProdutoPorIDComSucesso() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -52,8 +50,7 @@ public class ListarProdutoPorIDTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 400 ao tentar listar produto com ID em branco")
-	@Test
+	@Test(description = "CT-003: Deve retornar 400 ao tentar listar produto com ID em branco")
 	public void testTentarListarProdutoComIDEmBranco() {
 
 		produtosClient.BuscarProdutoPorID(" ")
@@ -63,8 +60,7 @@ public class ListarProdutoPorIDTest {
 				.body("message", equalTo("Produto não encontrado"));
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 400 ao tentar listar produto com ID inválido")
-	@Test
+	@Test(description = "CT-004: Deve retornar 400 ao tentar listar produto com ID inválido")
 	public void testTentarListarProdutoComIDInvalido() {
 
 		produtosClient.BuscarProdutoPorID("idInvalido")

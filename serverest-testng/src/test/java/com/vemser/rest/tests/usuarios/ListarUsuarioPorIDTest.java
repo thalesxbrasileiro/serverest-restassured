@@ -33,9 +33,9 @@ public class ListarUsuarioPorIDTest {
 
 		usuarioId = usuariosClient.cadastrarUsuarios(usuario)
 				.then()
-				.statusCode(HttpStatus.SC_CREATED)
-				.extract()
-				.path("_id");
+					.statusCode(HttpStatus.SC_CREATED)
+					.extract()
+						.path("_id");
 	}
 
 	@AfterMethod
@@ -45,8 +45,7 @@ public class ListarUsuarioPorIDTest {
 		}
 	}
 
-//	@DisplayName("Cenário 01: Deve validar contrato de listar usuários por ID com sucesso")
-	@Test(groups = "contrato")
+	@Test(groups = "contrato", description = "CT-001: Deve validar contrato de listar usuários por ID com sucesso")
 	public void testDeveValidarContratoListarUsuariosPorIDComSucesso() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -55,8 +54,7 @@ public class ListarUsuarioPorIDTest {
 				.body(matchesJsonSchemaInClasspath("schemas/usuarios/listar_usuarios_por_id.json"));
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 200 e listar usuários por nome com sucesso")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-002: Deve retornar 200 e listar usuários por nome com sucesso")
 	public void testListarUsuariosPorNomeComSucesso() {
 
 		usuariosClient.buscarUsuarioPorNome(usuario.getNome())
@@ -65,8 +63,7 @@ public class ListarUsuarioPorIDTest {
 				.body("usuarios[0].nome", equalTo(usuario.getNome()));
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Hamcrest")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-003: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Hamcrest")
 	public void testBuscarUsuarioPorIDComSucessoHamcrest() {
 
 		usuariosClient.buscarUsuarioPorID(usuarioId)
@@ -79,12 +76,10 @@ public class ListarUsuarioPorIDTest {
 		assertThat("_id", notNullValue());
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Assertions")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-004: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando Assertions")
 	public void testBuscarUsuarioPorIDComSucessoAssertions() {
 
 		Response usuarioResponse =
-
 				usuariosClient.buscarUsuarioPorID(usuarioId)
 					.then()
 						.statusCode(200)
@@ -98,12 +93,10 @@ public class ListarUsuarioPorIDTest {
 		Assert.assertEquals(usuario.getEmail(), emailResponse);
 	}
 
-//	@DisplayName("Cenário 05: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando AssertAll")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-005: Deve retornar 200 ao buscar usuário por ID com sucesso utilizando AssertAll")
 	public void testBuscarUsuarioPorIDComAssertAll() {
 
 		UsuariosResponse response =
-
 				usuariosClient.buscarUsuarioPorID(usuarioId)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -117,8 +110,7 @@ public class ListarUsuarioPorIDTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 06: Deve retornar 400 ao tentar buscar usuário com ID inválido")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-006: Deve retornar 400 ao tentar buscar usuário com ID inválido")
 	public void testTentarBuscarUsuarioComIDInvalido() {
 
 		String ID_INVALIDO = "idInvalido";
@@ -135,8 +127,7 @@ public class ListarUsuarioPorIDTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 07: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
-	@Test(dependsOnGroups = "contrato", groups = "funcional")
+	@Test(dependsOnGroups = "contrato", groups = "funcional", description = "CT-007: Deve retornar 400 ao tentar buscar usuário com ID com espaço em branco")
 	public void testTentarBuscarUsuarioComIDComEspacoEmBranco() {
 
 		String ID_COM_ESPACO_VAZIO = " ";
@@ -145,7 +136,7 @@ public class ListarUsuarioPorIDTest {
 				usuariosClient.buscarUsuarioPorID(ID_COM_ESPACO_VAZIO)
 						.then()
 						.extract()
-						.response();
+							.response();
 
 		softAssert.assertEquals(400, response.getStatusCode());
 		softAssert.assertEquals(USUARIO_NAO_ENCONTRADO, response.jsonPath().getString("message"));

@@ -30,8 +30,7 @@ public class AtualizarProdutosTest {
 						.path("authorization");
 	}
 
-//	@DisplayName("Cenário 01: Deve retornar 200 ao atualizar produto com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve retornar 200 ao atualizar produto com sucesso")
 	public void testAtualizarProdutoComSucesso() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -44,8 +43,7 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Registro alterado com sucesso"));
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 400 ao tentar atualizar produto sem informar descrição")
-	@Test
+	@Test(description = "CT-002: Deve retornar 400 ao tentar atualizar produto sem informar descrição")
 	public void testTentarAtualizarProdutoSemInformarDescricao() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -58,8 +56,7 @@ public class AtualizarProdutosTest {
 				.body("descricao", equalTo("descricao não pode ficar em branco"));
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 401 ao tentar atualizar produto sem estar autenticado")
-	@Test
+	@Test(description = "CT-003: Deve retornar 401 ao tentar atualizar produto sem estar autenticado")
 	public void testTentarAtualizarProdutoSemEstarAutenticado() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -72,8 +69,7 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
 	}
 
-//	@DisplayName("Cenário 05: Deve retornar 400 ao tentar atualizar produto já existente")
-	@Test
+	@Test(description = "CT-005: Deve retornar 400 ao tentar atualizar produto já existente")
 	public void testTentarAtualizarProdutoJaExistente() {
 
 		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
@@ -86,8 +82,7 @@ public class AtualizarProdutosTest {
 				.body("message", equalTo("Já existe produto com esse nome"));
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 403 ao tentar atualizar produto sem ser administrador")
-	@Test
+	@Test(description = "CT-002: Deve retornar 403 ao tentar atualizar produto sem ser administrador")
 	public void testTentarAtualizarProdutoSemSerAdministrador() {
 
 		LoginModel login = LoginDataFactory.loginUsuarioNaoAdmin();

@@ -38,8 +38,7 @@ public class CadastrarUsuariosTest {
 		}
 	}
 
-//	@DisplayName("Cenário 01: Deve validar contrato de cadastro de usuários com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve validar contrato de cadastro de usuários com sucesso")
 	public void testDeveValidarContratoCadastrarUsuariosComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -53,8 +52,7 @@ public class CadastrarUsuariosTest {
 							.path("_id");
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 200 quando cadastrar usuário com sucesso")
-	@Test
+	@Test(description = "CT-002: Deve retornar 200 quando cadastrar usuário com sucesso")
 	public void testDeveCadastrarUsuarioComSucesso() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioValido();
@@ -70,8 +68,7 @@ public class CadastrarUsuariosTest {
 							.path("_id");
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 400 quando tentar cadastrar usuário sem nome")
-	@Test
+	@Test(description = "CT-003: Deve retornar 400 quando tentar cadastrar usuário sem nome")
 	public void testTentarCadastrarUsuarioSemNome() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComNomeEmBranco();
@@ -87,8 +84,7 @@ public class CadastrarUsuariosTest {
 	}
 
 
-//	@DisplayName("Cenário 04: Deve retornar 400 quando tentar cadastrar usuário com email já cadastrado")
-	@Test
+	@Test(description = "CT-004: Deve retornar 400 quando tentar cadastrar usuário com email já cadastrado")
 	public void testTentarCadastrarUsuarioComEmailCadastrado() {
 
 		UsuariosModel usuarioValido = UsuariosDataFactory.usuarioValido();
@@ -110,8 +106,7 @@ public class CadastrarUsuariosTest {
 		assertEquals(EMAIL_JA_CADASTRADO, response);
 	}
 
-//	@DisplayName("Cenário 05: Deve retornar 400 quando tentar cadastrar usuário com email em branco")
-	@Test
+	@Test(description = "CT-005: Deve retornar 400 quando tentar cadastrar usuário com email em branco")
 	public void testTentarCadastrarUsuarioComTodosDadosEmBranco() {
 
 		UsuariosModel usuario = UsuariosDataFactory.usuarioComTodosOsDadosEmBranco();
@@ -129,9 +124,7 @@ public class CadastrarUsuariosTest {
 		softAssert.assertAll();
 	}
 
-	//	@DisplayName("Cenário 06: Deve retornar 400 quando tentar cadastrar usuário com dados inválidos")
-	//	@MethodSource("com.vemser.rest.data.provider.UsuariosDataProvider#usuarioDataProvider")
-	@Test(dataProvider = "usuarioDataProvider", dataProviderClass = UsuariosDataProvider.class)
+	@Test(dataProvider = "usuarioDataProvider", dataProviderClass = UsuariosDataProvider.class, description = "CT-006: Deve retornar 400 quando tentar cadastrar usuário com dados inválidos")
 	public void testTentarCadastrarUsuarioComTodosDadosEmBrancoDataProvider(UsuariosModel usuario, String key, String value) {
 		usuariosClient.cadastrarUsuarios(usuario)
 				.then()

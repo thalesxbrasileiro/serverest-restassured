@@ -27,7 +27,6 @@ public class RealizarLoginTest {
 		LoginModel login = LoginDataFactory.loginValido();
 
 		Response response =
-
 				loginClient.realizarLogin(login)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -44,8 +43,7 @@ public class RealizarLoginTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 401 quando tentar realizar login com usuário inválido")
-	@Test
+	@Test(description = "CT-002: Deve retornar 401 quando tentar realizar login com usuário inválido")
 	public void testTentarRealizarLoginComUsuarioInvalido() {
 
 		LoginModel loginInvalido = LoginDataFactory.LoginInvalido();
@@ -57,8 +55,7 @@ public class RealizarLoginTest {
 				.body("message", equalTo("Email e/ou senha inválidos"));
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 401 quando tentar realizar login com senha inválida")
-	@Test
+	@Test(description = "CT-003: Deve retornar 401 quando tentar realizar login com senha inválida")
 	public void testTentarRealizarLoginComSenhaInvalida() {
 
 		LoginModel loginSenhaInvalida = LoginDataFactory.loginSenhaInvalida();
@@ -70,8 +67,7 @@ public class RealizarLoginTest {
 				.body("message", equalTo("Email e/ou senha inválidos"));
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 400 quando tentar realizar login sem informar usuário")
-	@Test
+	@Test(description = "CT-004: Deve retornar 400 quando tentar realizar login sem informar usuário")
 	public void testTentarRealizarLoginSemInformarUsuario() {
 
 		LoginModel loginSemInformarUsuario = LoginDataFactory.loginSemInformarUsuario();
@@ -83,8 +79,7 @@ public class RealizarLoginTest {
 				.body("email", equalTo("email não pode ficar em branco"));
 	}
 
-//	@DisplayName("Cenário 05: Deve retornar 400 quando tentar realizar login sem informar senha")
-	@Test
+	@Test(description = "CT-005: Deve retornar 400 quando tentar realizar login sem informar senha")
 	public void testTentarRealizarLoginSemInformarSenha() {
 
 		LoginModel loginSemInformarSenha = LoginDataFactory.loginSemInformarSenha();

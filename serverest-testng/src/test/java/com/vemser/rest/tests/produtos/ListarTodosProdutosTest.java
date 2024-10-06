@@ -11,8 +11,7 @@ public class ListarTodosProdutosTest {
 
 	private final ProdutosClient produtosClient = new ProdutosClient();
 
-//	@DisplayName("Cenário 01: Deve validar contrato listar todos os produtos com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve validar contrato listar todos os produtos com sucesso")
 	public void testDeveValidarContratoListarTodosProdutosComSucesso() {
 
 		produtosClient.buscarTodosProdutos()
@@ -21,8 +20,7 @@ public class ListarTodosProdutosTest {
 				.body(matchesJsonSchemaInClasspath("schemas/produtos/listar_todos_produtos.json"));
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 200 ao listar todos os produtos com sucesso")
-	@Test
+	@Test(description = "CT-002: Deve retornar 200 ao listar todos os produtos com sucesso")
 	public void testListarTodosProdutosComSucesso() {
 
 		produtosClient.buscarTodosProdutos()

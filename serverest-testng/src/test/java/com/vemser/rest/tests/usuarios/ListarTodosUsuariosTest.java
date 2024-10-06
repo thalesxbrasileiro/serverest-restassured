@@ -11,7 +11,7 @@ public class ListarTodosUsuariosTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();
 
-	@Test(description = "Cenário 01: Deve validar contrato de listar todos os usuários com sucesso")
+	@Test(description = "CT-001: Deve validar contrato de listar todos os usuários com sucesso")
 	public void testDeveValidarContratoListarTodosUsuariosComSucesso() {
 
 		usuariosClient.buscarTodosUsuarios()
@@ -20,7 +20,7 @@ public class ListarTodosUsuariosTest {
 				.body(matchesJsonSchemaInClasspath("schemas/usuarios/listar_todos_usuarios.json"));
 	}
 
-	@Test(description = "Cenário 02: Deve retornar 200 e listar todos os usuários com sucesso")
+	@Test(description = "CT-002: Deve retornar 200 e listar todos os usuários com sucesso")
 	public void testListarTodosUsuariosComSucesso() {
 
 		usuariosClient.buscarTodosUsuarios()

@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-//@DisplayName("Testes de excluir usuários")
 public class ExcluirUsuarioTest {
 
 	private final UsuariosClient usuariosClient = new UsuariosClient();
@@ -27,12 +26,10 @@ public class ExcluirUsuarioTest {
 					.path("_id");
 	}
 
-//	@DisplayName("Cenário 01: Deve retornar 200 e excluir usuário com sucesso")
-	@Test
+	@Test(description = "CT-001: Deve retornar 200 e excluir usuário com sucesso")
 	public void testExcluirUsuarioComSucesso() {
 
 		Response response =
-
 				usuariosClient.excluirUsuario(usuarioId)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -46,14 +43,12 @@ public class ExcluirUsuarioTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 02: Deve retornar 405 ao tentar excluir usuário sem informar ID")
-	@Test
+	@Test(description = "CT-002: Deve retornar 405 ao tentar excluir usuário sem informar ID")
 	public void testTentarDeletarUsuarioSemInformarID() {
 
 		String ID_VAZIO = "";
 
 		Response response =
-
 				usuariosClient.excluirUsuario(ID_VAZIO)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -66,14 +61,12 @@ public class ExcluirUsuarioTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 03: Deve retornar 200 e não excluir usuário informando ID inválido")
-	@Test
+	@Test(description = "CT-003: Deve retornar 200 e não excluir usuário informando ID inválido")
 	public void testTentarDeletarUsuarioInformandoIDInvalido() {
 
 		String ID_INVALIDO = "idInvalido";
 
 		Response response =
-
 				usuariosClient.excluirUsuario(ID_INVALIDO)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
@@ -87,14 +80,12 @@ public class ExcluirUsuarioTest {
 		softAssert.assertAll();
 	}
 
-//	@DisplayName("Cenário 04: Deve retornar 400 ao tentar excluir usuário com carrinho cadastrado")
-	@Test
+	@Test(description = "CT-004: Deve retornar 400 ao tentar excluir usuário com carrinho cadastrado")
 	public void testTentarDeletarUsuarioComCarrinhoCadastrado() {
 
 		String ID_USUARIO_COM_CARRINHO_CADASTRADO = "0uxuPY0cbmQhpEz1";
 
 		Response response =
-
 				usuariosClient.excluirUsuario(ID_USUARIO_COM_CARRINHO_CADASTRADO)
 					.then()
 						.header("Content-Type", "application/json; charset=utf-8")
