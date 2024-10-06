@@ -1,14 +1,29 @@
 package com.vemser.rest.data.factory;
 
 import com.vemser.rest.model.LoginModel;
+import com.vemser.rest.utils.Manipulation;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Properties;
 
 public class LoginDataFactory {
+
+	private static final String INVALIDO = "invalido";
+
+	private static final Properties PROPS = Manipulation.getProp();
+
+	public static String getEmailValidoProp() {
+		return PROPS.getProperty("EMAIL_USUARIO");
+	}
+	public static String getSenhaValidaProp() {
+		return PROPS.getProperty("SENHA_USUARIO");
+	}
 
 	private static LoginModel novoLogin() {
 
 		LoginModel login = new LoginModel();
-		login.setEmail("fulano@qa.com");
-		login.setPassword("teste");
+		login.setEmail(getEmailValidoProp());
+		login.setPassword(getSenhaValidaProp());
 
 		return login;
 	}
@@ -20,8 +35,8 @@ public class LoginDataFactory {
 	public static LoginModel LoginInvalido() {
 
 		LoginModel login = new LoginModel();
-		login.setEmail("usuario@invalido.com");
-		login.setPassword("teste");
+		login.setEmail(INVALIDO + getEmailValidoProp());
+		login.setPassword(getSenhaValidaProp());
 
 		return login;
 	}
@@ -29,8 +44,8 @@ public class LoginDataFactory {
 	public static LoginModel loginSenhaInvalida() {
 
 		LoginModel login = new LoginModel();
-		login.setEmail("fulano@qa.com");
-		login.setPassword("senhaInvalida");
+		login.setEmail(getEmailValidoProp());
+		login.setPassword(getSenhaValidaProp() + INVALIDO);
 
 		return login;
 	}
@@ -38,8 +53,8 @@ public class LoginDataFactory {
 	public static LoginModel loginSemInformarUsuario() {
 
 		LoginModel login = new LoginModel();
-		login.setEmail("");
-		login.setPassword("teste");
+		login.setEmail(StringUtils.EMPTY);
+		login.setPassword(getSenhaValidaProp());
 
 		return login;
 	}
@@ -47,8 +62,8 @@ public class LoginDataFactory {
 	public static LoginModel loginSemInformarSenha() {
 
 		LoginModel login = new LoginModel();
-		login.setEmail("fulano@qa.com");
-		login.setPassword("");
+		login.setEmail(getEmailValidoProp());
+		login.setPassword(StringUtils.EMPTY);
 
 		return login;
 	}
