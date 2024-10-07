@@ -18,7 +18,7 @@ public class ProdutosDataFactory {
 		produto.setNome(faker.commerce().productName());
 		produto.setPreco(faker.number().numberBetween(1, 5000));
 		produto.setDescricao(faker.commerce().material());
-		produto.setQuantidade(faker.number().numberBetween(1, 200));
+		produto.setQuantidade(faker.number().numberBetween(100, 200));
 
 		return produto;
 	}
@@ -33,7 +33,7 @@ public class ProdutosDataFactory {
 		produto.setNome("");
 		produto.setPreco(faker.number().numberBetween(1, 5000));
 		produto.setDescricao(faker.commerce().material());
-		produto.setQuantidade(faker.number().numberBetween(1, 200));
+		produto.setQuantidade(faker.number().numberBetween(100, 200));
 
 		return produto;
 	}
@@ -44,7 +44,7 @@ public class ProdutosDataFactory {
 		produto.setNome(faker.commerce().productName());
 		produto.setPreco(null);
 		produto.setDescricao(faker.commerce().material());
-		produto.setQuantidade(faker.number().numberBetween(1, 200));
+		produto.setQuantidade(faker.number().numberBetween(100, 200));
 
 		return produto;
 	}
@@ -55,7 +55,7 @@ public class ProdutosDataFactory {
 		produto.setNome(faker.commerce().productName());
 		produto.setPreco(faker.number().numberBetween(1, 5000));
 		produto.setDescricao("");
-		produto.setQuantidade(faker.number().numberBetween(1, 200));
+		produto.setQuantidade(faker.number().numberBetween(100, 200));
 
 		return produto;
 	}
@@ -77,7 +77,7 @@ public class ProdutosDataFactory {
 		produto.setNome("Logitech MX Vertical");
 		produto.setPreco(faker.number().numberBetween(1, 5000));
 		produto.setDescricao(faker.commerce().material());
-		produto.setQuantidade(faker.number().numberBetween(1, 200));
+		produto.setQuantidade(faker.number().numberBetween(100, 200));
 
 		return produto;
 	}

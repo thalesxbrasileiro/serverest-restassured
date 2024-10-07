@@ -3,7 +3,6 @@ package com.vemser.rest.client;
 import com.vemser.rest.model.CarrinhosModel;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
@@ -43,6 +42,15 @@ public class CarrinhosClient extends BaseClient {
 						.body(carrinho)
 				.when()
 						.post(CARRINHOS);
+	}
+
+	public Response excluirCarrinho(String token) {
+		return
+				given()
+						.spec(super.set())
+						.header("authorization", token)
+				.when()
+						.delete(CARRINHOS + "/concluir-compra");
 	}
 
 }
