@@ -30,7 +30,7 @@ public class ListarTodosCarrinhosTest {
 
 		carrinhosClient.BuscarTodosCarrinhos()
 				.then()
-				.header("Content-Type", "application/json; charset=utf-8")
-				.statusCode(HttpStatus.SC_OK);
+					.header("Content-Type", "application/json; charset=utf-8")
+					.statusCode(HttpStatus.SC_OK);
 	}
 }
