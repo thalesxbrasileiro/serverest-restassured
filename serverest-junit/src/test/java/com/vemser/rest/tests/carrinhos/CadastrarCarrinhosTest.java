@@ -26,10 +26,11 @@ public class CadastrarCarrinhosTest {
 	public void setUp() {
 		LoginModel login = LoginDataFactory.loginValido();
 
-		token = loginClient.realizarLogin(login)
-				.then()
-					.extract()
-					.path("authorization");
+		token =
+				loginClient.realizarLogin(login)
+					.then()
+						.extract()
+						.path("authorization");
 	}
 
 	@AfterEach
@@ -115,7 +116,6 @@ public class CadastrarCarrinhosTest {
 					.body("message", equalTo("Produto não possui quantidade suficiente"));
 	}
 
-
 	@Test
 	@DisplayName("CT-007: Deve retornar 401 ao tentar cadastrar carrinho sem estar autenticado")
 	public void testDeveTentarCadastrarCarrinhoSemAutenticacao() {
@@ -127,4 +127,5 @@ public class CadastrarCarrinhosTest {
 					.statusCode(401)
 					.body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
 	}
+
 }
