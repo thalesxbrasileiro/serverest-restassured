@@ -24,6 +24,7 @@ public class CadastrarProdutoTest {
 
 	private final LoginClient loginClient = new LoginClient();
 	private final ProdutosClient produtosClient = new ProdutosClient();
+
 	private String produtoId;
 	private String token;
 
@@ -35,7 +36,7 @@ public class CadastrarProdutoTest {
 				loginClient.realizarLogin(login)
 					.then()
 						.extract()
-							.path("authorization");
+						.path("authorization");
 	}
 
 	@AfterEach

@@ -82,16 +82,13 @@ public class ProdutosDataFactory {
 		return produto;
 	}
 
-	public static Response buscarTodosProdutosERetornarResposta() {
-		return produtosClient.buscarTodosProdutos()
-				.then()
-				.extract()
-				.response();
-	}
-
 	public static String buscarPrimeiroProdutoId() {
-		Response response = buscarTodosProdutosERetornarResposta();
-		return response.path("produtos[0]._id");
+		return
+				produtosClient.buscarTodosProdutos()
+					.then()
+						.extract()
+						.response()
+						.path("produtos[0]._id");
 	}
 
 }

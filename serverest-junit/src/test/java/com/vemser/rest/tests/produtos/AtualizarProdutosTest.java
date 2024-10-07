@@ -81,8 +81,8 @@ public class AtualizarProdutosTest {
 	@DisplayName("CT-005: Deve retornar 400 ao tentar atualizar produto já existente")
 	public void testTentarAtualizarProdutoJaExistente() {
 
-		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
 		ProdutosModel produto = ProdutosDataFactory.produtoJaCadastrado();
+		String idProduto = ProdutosDataFactory.buscarPrimeiroProdutoId();
 
 		produtosClient.atualizarProduto(produto, idProduto, token)
 			.then()
