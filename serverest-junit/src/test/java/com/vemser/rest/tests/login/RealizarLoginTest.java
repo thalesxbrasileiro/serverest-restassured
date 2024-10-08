@@ -27,7 +27,7 @@ public class RealizarLoginTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-							.response();
+						.response();
 
 		String authorization = response.jsonPath().getString("authorization");
 

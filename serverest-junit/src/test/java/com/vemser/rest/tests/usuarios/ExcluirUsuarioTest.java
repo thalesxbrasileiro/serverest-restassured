@@ -24,7 +24,7 @@ public class ExcluirUsuarioTest {
 				usuariosClient.cadastrarUsuarios(usuario)
 					.then()
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@Test
@@ -37,7 +37,7 @@ public class ExcluirUsuarioTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(200, response.getStatusCode()),
@@ -58,7 +58,7 @@ public class ExcluirUsuarioTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(405)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(405, response.getStatusCode()),
@@ -78,7 +78,7 @@ public class ExcluirUsuarioTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(200, response.getStatusCode()),
@@ -91,7 +91,7 @@ public class ExcluirUsuarioTest {
 	@DisplayName("CT-004: Deve retornar 400 ao tentar excluir usuário com carrinho cadastrado")
 	public void testTentarDeletarUsuarioComCarrinhoCadastrado() {
 
-		String ID_USUARIO_COM_CARRINHO_CADASTRADO = "0uxuPY0cbmQhpEz1";
+		String ID_USUARIO_COM_CARRINHO_CADASTRADO = "13cpUfLOBB5xxsWz";
 
 		Response response =
 				usuariosClient.excluirUsuario(ID_USUARIO_COM_CARRINHO_CADASTRADO)
@@ -99,7 +99,7 @@ public class ExcluirUsuarioTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(400)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(400, response.getStatusCode()),

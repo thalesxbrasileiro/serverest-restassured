@@ -28,7 +28,7 @@ public class AtualizarProdutosTest {
 				loginClient.realizarLogin(login)
 					.then()
 						.extract()
-							.path("authorization");
+						.path("authorization");
 	}
 
 	@Order(1)

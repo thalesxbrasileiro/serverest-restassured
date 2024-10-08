@@ -31,7 +31,7 @@ public class ListarUsuarioPorIDTest {
 					.then()
 						.statusCode(HttpStatus.SC_CREATED)
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@AfterEach
@@ -82,7 +82,7 @@ public class ListarUsuarioPorIDTest {
 					.then()
 						.statusCode(200)
 						.extract()
-							.response();
+						.response();
 
 		String nomeResponse = usuarioResponse.path("nome");
 		String emailResponse = usuarioResponse.path("email");
@@ -103,7 +103,7 @@ public class ListarUsuarioPorIDTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-							.as(UsuariosResponse.class);
+						.as(UsuariosResponse.class);
 
 		assertAll("response",
 				() -> assertEquals(usuario.getNome(), response.getNome(), "O nome não corresponde ao esperado"),
@@ -122,7 +122,7 @@ public class ListarUsuarioPorIDTest {
 				usuariosClient.buscarUsuarioPorID(ID_INVALIDO)
 					.then()
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> assertEquals(400, response.getStatusCode()),

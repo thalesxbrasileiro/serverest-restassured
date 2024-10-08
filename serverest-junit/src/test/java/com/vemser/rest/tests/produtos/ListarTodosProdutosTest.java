@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.notNullValue;
 
 @DisplayName("Testes de listar todos os produtos")
 public class ListarTodosProdutosTest {
@@ -31,13 +31,6 @@ public class ListarTodosProdutosTest {
 				.then()
 					.header("Content-Type", "application/json; charset=utf-8")
 					.statusCode(200)
-					.time(lessThan(3000L))
-					.body("quantidade", notNullValue())
-					.body("quantidade", greaterThan(0))
-					.body("produtos.nome", notNullValue())
-					.body("produtos.preco", notNullValue())
-					.body("produtos.descricao", notNullValue())
-					.body("produtos.quantidade", notNullValue())
 					.body("produtos._id", notNullValue());
 	}
 

@@ -2,7 +2,6 @@ package com.vemser.rest.data.factory;
 
 import com.vemser.rest.client.ProdutosClient;
 import com.vemser.rest.model.ProdutosModel;
-import io.restassured.response.Response;
 import net.datafaker.Faker;
 
 import java.util.Locale;

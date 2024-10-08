@@ -24,7 +24,7 @@ public class AtualizarUsuariosTest {
 				usuariosClient.cadastrarUsuarios(usuario)
 					.then()
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@AfterEach
@@ -46,7 +46,7 @@ public class AtualizarUsuariosTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(200)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(200, response.getStatusCode()),
@@ -67,7 +67,7 @@ public class AtualizarUsuariosTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(400)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(400, response.getStatusCode()),
@@ -93,7 +93,7 @@ public class AtualizarUsuariosTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(400)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(400, response.getStatusCode(), "Status code inválido"),
@@ -116,7 +116,7 @@ public class AtualizarUsuariosTest {
 						.header("Content-Type", "application/json; charset=utf-8")
 						.statusCode(405)
 						.extract()
-							.response();
+						.response();
 
 		assertAll(
 				() -> Assertions.assertEquals(405, response.getStatusCode()),

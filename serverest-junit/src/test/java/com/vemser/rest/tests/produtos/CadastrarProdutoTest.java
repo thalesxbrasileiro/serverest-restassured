@@ -61,7 +61,7 @@ public class CadastrarProdutoTest {
 						.statusCode(HttpStatus.SC_CREATED)
 						.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/produtos/cadastrar_produtos.json"))
 						.extract()
-							.path("_id");
+						.path("_id");
 		;
 	}
 
@@ -79,7 +79,7 @@ public class CadastrarProdutoTest {
 						.body("message", equalTo("Cadastro realizado com sucesso"))
 						.body("_id", notNullValue())
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@Test

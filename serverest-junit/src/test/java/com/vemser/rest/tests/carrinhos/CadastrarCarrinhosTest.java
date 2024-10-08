@@ -41,7 +41,7 @@ public class CadastrarCarrinhosTest {
 	}
 
 	@Test
-	@DisplayName("CT-001: Deve retornar 201 ao cadastrar carrinho com sucesso")
+	@DisplayName("CT-001: Deve validar contrato de cadastrar carrinho com sucesso")
 	public void testDeveValidarContratoCadastrarCarrinhoComSucesso() {
 
 		CarrinhosModel carrinho = CarrinhosDataFactory.carrinhoComProdutosValido();
@@ -81,7 +81,6 @@ public class CadastrarCarrinhosTest {
 	public void testDeveTentarCadastrarMaisDeUmCarrinho() {
 
 		CarrinhosModel carrinho = CarrinhosDataFactory.carrinhoComProdutosValido();
-
 		carrinhosClient.cadastrarCarrinho(carrinho, token)
 				.then()
 					.statusCode(201);

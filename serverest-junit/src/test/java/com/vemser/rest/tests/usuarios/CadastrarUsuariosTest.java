@@ -46,7 +46,7 @@ public class CadastrarUsuariosTest {
 						.statusCode(HttpStatus.SC_CREATED)
 						.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/usuarios/cadastrar_usuarios.json"))
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class CadastrarUsuariosTest {
 						.body("message", equalTo("Cadastro realizado com sucesso"))
 						.body("_id", notNullValue())
 						.extract()
-							.path("_id");
+						.path("_id");
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class CadastrarUsuariosTest {
 					.then()
 						.statusCode(400)
 						.extract()
-							.as(UsuariosModel.class);
+						.as(UsuariosModel.class);
 
 		assertEquals(NOME_EM_BRANCO, response.getNome());
 	}
@@ -94,7 +94,7 @@ public class CadastrarUsuariosTest {
 					.then()
 						.statusCode(HttpStatus.SC_CREATED)
 						.extract()
-							.path("_id");
+						.path("_id");
 
 		UsuariosModel usuarioComEmailJaCadastrado = UsuariosDataFactory.usuarioComEmailJaCadastrado(usuarioValido.getEmail());
 
@@ -103,7 +103,7 @@ public class CadastrarUsuariosTest {
 					.then()
 						.statusCode(400)
 						.extract()
-							.path("message");
+						.path("message");
 
 		assertEquals(EMAIL_JA_CADASTRADO, response);
 	}
@@ -118,7 +118,7 @@ public class CadastrarUsuariosTest {
 				usuariosClient.cadastrarUsuarios(usuario)
 					.then()
 						.extract()
-							.as(UsuariosModel.class);
+						.as(UsuariosModel.class);
 
 		assertAll("response",
 				() -> assertEquals(NOME_EM_BRANCO, response.getNome()),

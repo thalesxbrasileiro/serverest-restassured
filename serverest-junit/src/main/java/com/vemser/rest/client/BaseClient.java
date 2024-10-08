@@ -7,7 +7,10 @@ import io.restassured.specification.RequestSpecification;
 
 public abstract class BaseClient {
 
-	final String BASE_URI = "http://localhost:3000";
+	// Serverest
+	final String BASE_URI = "https://serverest.dev";
+	// Localhost
+//	final String BASE_URI = "http://localhost:3000";
 
 	public RequestSpecification set() {
 
