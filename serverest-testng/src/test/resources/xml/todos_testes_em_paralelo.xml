@@ -1,0 +1,26 @@
+<suite name="Suite de testes em paralelo" parallel="classes" thread-count="10">
+    <test name="Todos os Testes">
+        <classes>
+            <class name="com.vemser.rest.tests.usuarios.AtualizarUsuariosTest"/>
+            <class name="com.vemser.rest.tests.usuarios.CadastrarUsuariosTest"/>
+            <class name="com.vemser.rest.tests.usuarios.ExcluirUsuarioTest"/>
+            <class name="com.vemser.rest.tests.usuarios.ExcluirUsuarioTest"/>
+            <class name="com.vemser.rest.tests.usuarios.ListarTodosUsuariosTest"/>
+            <class name="com.vemser.rest.tests.usuarios.ListarUsuarioPorIDTest"/>
+
+            <class name="com.vemser.rest.tests.produtos.AtualizarProdutosTest"/>
+            <class name="com.vemser.rest.tests.produtos.CadastrarProdutoTest"/>
+            <class name="com.vemser.rest.tests.produtos.ExcluirProdutoTest"/>
+            <class name="com.vemser.rest.tests.produtos.ListarProdutoPorIDTest"/>
+            <class name="com.vemser.rest.tests.produtos.ListarTodosProdutosTest"/>
+
+            <class name="com.vemser.rest.tests.login.RealizarLoginTest"/>
+
+            <class name="com.vemser.rest.tests.carrinhos.CadastrarCarrinhosTest"/>
+            <class name="com.vemser.rest.tests.carrinhos.ExcluirCarrinhoCancelarCompraTest"/>
+            <class name="com.vemser.rest.tests.carrinhos.ExcluirCarrinhoTest"/>
+            <class name="com.vemser.rest.tests.carrinhos.ListarCarrinhosPorIDTest"/>
+            <class name="com.vemser.rest.tests.carrinhos.ListarTodosCarrinhosTest"/>
+        </classes>
+    </test>
+</suite>
