@@ -83,8 +83,8 @@ public class ExcluirProdutoTest {
 		produtosClient.excluirProduto(idProduto, token)
 			.then()
 				.header("Content-Type", "application/json; charset=utf-8")
-				.statusCode(401)
-				.body("message", equalTo("Nenhum registro excluído"));
+				.statusCode(405)
+				.body("message", equalTo("Não é possível realizar DELETE em /produtos/. Acesse https://serverest.dev para ver as rotas disponíveis e como utilizá-las."));
 	}
 
 	@Test(description = "CT-005: Deve retornar 400 ao tentar excluir produto que faz parte de carrinho")
@@ -118,4 +118,3 @@ public class ExcluirProdutoTest {
 	}
 
 }
-
