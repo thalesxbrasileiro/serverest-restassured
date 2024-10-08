@@ -53,4 +53,13 @@ public class CarrinhosClient extends BaseClient {
 						.delete(CARRINHOS + "/concluir-compra");
 	}
 
+	public Response cancelarCompra(String token) {
+		return
+				given()
+						.spec(super.set())
+						.header("authorization", token)
+				.when()
+						.delete(CARRINHOS + "/cancelar-compra");
+	}
+
 }
