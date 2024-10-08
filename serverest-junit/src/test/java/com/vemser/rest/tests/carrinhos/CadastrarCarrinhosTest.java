@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
+@DisplayName("Testes de cadastrar carrinhos")
 public class CadastrarCarrinhosTest {
 
 	private final LoginClient loginClient = new LoginClient();
